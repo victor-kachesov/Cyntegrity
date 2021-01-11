@@ -10,7 +10,7 @@ To restore backup use `mongorestore` tool.\
 For example:\
 `mongorestore --host=localhost --port=27017 --gzip --nsFrom=CyntegrityDb.* --nsTo=CyntegrityDb.* resources\db_dump`\
 Where `–-host` and `-–port` should point to an existing mongodb server.\
-`--nsTo` parameter is new database name which will be used for backend.\
+`--nsTo` parameter is new database name which will be used for backend server.\
 Backup already contains three users: `user1, user2, user3`
 
 ### 2. Set up pipeline executor parameters.
@@ -26,21 +26,22 @@ For example:
 ```
 
 ### 3. Start a backend server.
-For that we need to set some environment variables.
-Open folder Cyntegrity.Backend\Cyntegrity.Backend in command propmt.
-And run following command before start a backend server.
-set CYNTEGRITY_BACKEND_PORT=1337
-set CYNTEGRITY_DB_CONNECTON_STRING=mongodb://localhost:27017
-set CYNTEGRITY_DB_NAME=CyntegrityDb
-set CYNTEGRITY_PIPELINE_EXECUTOR_PATH=../../resources/pipeline_executor_bin/Cyntegrity.PipelineExecutor.dll 
-Where CYNTEGRITY_BACKEND_PORT – port for backend api
-CYNTEGRITY_DB_CONNECTON_STRING – connection string to mongodb database from the frist step
-CYNTEGRITY_DB_NAME – database name from the first step
-CYNTEGRITY_PIPELINE_EXECUTOR_PATH – path to executor application from resources\pipeline_executor_bin folder, here you can specify a full path to Cyntegrity.PipelineExecutor.dll
-Then run following command
-npm install
+For that we need to set some environment variables.\
+Open folder `Cyntegrity.Backend\Cyntegrity.Backend` in command propmt.
+And run following commands before starting a backend server.
+`set CYNTEGRITY_BACKEND_PORT=1337`\
+`set CYNTEGRITY_DB_CONNECTON_STRING=mongodb://localhost:27017`
+`set CYNTEGRITY_DB_NAME=CyntegrityDb`
+`set CYNTEGRITY_PIPELINE_EXECUTOR_PATH=../../resources/pipeline_executor_bin/Cyntegrity.PipelineExecutor.dll`
+Where\
+`CYNTEGRITY_BACKEND_PORT` - port for backend api\
+`CYNTEGRITY_DB_CONNECTON_STRING` – connection string to mongodb database from the frist step\
+`CYNTEGRITY_DB_NAME` – database name from the first step\
+`CYNTEGRITY_PIPELINE_EXECUTOR_PATH` - path to executor application from `resources\pipeline_executor_bin` folder, here you can specify a full path to `Cyntegrity.PipelineExecutor.dll`\
+Then run following command\
+`npm install`
 Then run 
-node app.js
+`node app.js`
 After that for test you can open http://localhost:1337/api/users in a browser and view list of users.
 
 ### 4. Start a frontend application.
