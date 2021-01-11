@@ -7,14 +7,15 @@ Steps to run
 1.	Restore backup of database.
 Backup is located in folder resources\db_dump
 To restore backup use mongorestore tool.
-For example
-mongorestore --host=localhost --port=27017 --gzip --nsFrom=CyntegrityDb.* --nsTo=CyntegrityDb2.* resources\db_dump
-Where –host and –port should point to an existing mongodb server.
---nsTo parameter is new database name which will be used for backend
+For example:
+mongorestore --host=localhost --port=27017 --gzip --nsFrom=CyntegrityDb.* --nsTo=CyntegrityDb.* resources\db_dump
+Where –-host and -–port should point to an existing mongodb server.
+--nsTo parameter is new database name which will be used for backend.
+Backup already contains three users: user1, user2, user3.
 
 2.	Set up pipeline executor parameters.
 Open file resources\pipeline_executor_bin\appSettings.json and edit parameters ConnectionString and DatabaseName. They should be the same as you entered in the first step.
-For example
+For example:
 {
   "DatabaseSettings": {
     "ConnectionString": "mongodb://localhost:27017",
@@ -24,17 +25,21 @@ For example
 
 3.	Start a backend server.
 For that we need to set some environment variables.
-Run following command in command prompt before start a backend server.
+Open folder Cyntegrity.Backend\Cyntegrity.Backend in command propmt.
+And run following command before start a backend server.
 set CYNTEGRITY_BACKEND_PORT=1337
 set CYNTEGRITY_DB_CONNECTON_STRING=mongodb://localhost:27017
-set CYNTEGRITY_DB_NAME= CyntegrityDb
-set CYNTEGRITY_PIPELINE_EXECUTOR_PATH= ../../Cyntegrity.PipelineExecutor/Cyntegrity.PipelineExecutor/bin/Release/netcoreapp3.1/publish/Cyntegrity.PipelineExecutor.dll
+set CYNTEGRITY_DB_NAME=CyntegrityDb
+set CYNTEGRITY_PIPELINE_EXECUTOR_PATH=../../resources/pipeline_executor_bin/Cyntegrity.PipelineExecutor.dll 
 Where CYNTEGRITY_BACKEND_PORT – port for backend api
 CYNTEGRITY_DB_CONNECTON_STRING – connection string to mongodb database from the frist step
 CYNTEGRITY_DB_NAME – database name from the first step
-CYNTEGRITY_PIPELINE_EXECUTOR_PATH – path to executor application from resources\pipeline_executor_bin folder
+CYNTEGRITY_PIPELINE_EXECUTOR_PATH – path to executor application from resources\pipeline_executor_bin folder, here you can specify a full path to Cyntegrity.PipelineExecutor.dll
 Then run following command
+npm install
+Then run 
 node app.js
+After that for test you can open http://localhost:1337/api/users in a browser and view list of users.
 
 4.	Start a frontend application.
 Open file Cyntegrity.Web\Cyntegrity.Web\.env and edit variable VUE_APP_CYNTEGRITY_API_URL. It should point to the backend server from the third step.
