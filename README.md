@@ -37,4 +37,11 @@ Then run following command
 node app.js
 
 4.	Start a frontend application.
+Open file Cyntegrity.Web\Cyntegrity.Web\.env and edit variable VUE_APP_CYNTEGRITY_API_URL. It should point to the backend server from the third step.
+For example
+VUE_APP_CYNTEGRITY_API_URL=http://localhost:1337/api
+Then open folder Cyntegrity.Web\Cyntegrity.Web in a command prompt and run following command
+npx vue-cli-service serve --port 1338
+When the application starts you can open it in a browser by link http://localhost:1338
 
+5.	First action you need to do is to select user. Otherwise, you can’t add or delete tasks and pipelines.
