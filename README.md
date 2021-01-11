@@ -47,13 +47,14 @@ Then run \
 After that for test you can open http://localhost:1337/api/users in a browser and view list of users.
 
 ### 4. Start a frontend application
-Open file Cyntegrity.Web\Cyntegrity.Web\.env and edit variable VUE_APP_CYNTEGRITY_API_URL. It should point to the backend server from the third step.
-For example
-VUE_APP_CYNTEGRITY_API_URL=http://localhost:1337/api
-Then open folder Cyntegrity.Web\Cyntegrity.Web in a command prompt and run following command
-npm install
-Then run
-npx vue-cli-service serve --port 1338
+Open file `Cyntegrity.Web\Cyntegrity.Web\.env` and edit variable `VUE_APP_CYNTEGRITY_API_URL`.\
+It should point to the backend server from the third step.\
+For example\
+`VUE_APP_CYNTEGRITY_API_URL=http://localhost:1337/api`\
+Then open folder `Cyntegrity.Web\Cyntegrity.Web` in a command prompt and run following command\
+`npm install`\
+Then run\
+`npx vue-cli-service serve --port 1338`\
 After that, you can open the application in a browser by link http://localhost:1338
 
 ### 5. 
