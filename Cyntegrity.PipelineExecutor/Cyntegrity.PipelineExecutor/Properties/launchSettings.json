@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Cyntegrity.PipelineExecutor": {
+      "commandName": "Project",
+      "commandLineArgs": "5ffa9997418bef328060648b"
+    }
+  }
+}
