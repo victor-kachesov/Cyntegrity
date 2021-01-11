@@ -5,16 +5,16 @@ System requirements: nodejs, npm, .net core 3.1, mongodb, mongorestore
 ## Steps to run
 
 ### 1. Restore backup of database.
-Backup is located in folder resources\db_dump\
-To restore backup use mongorestore tool.\
+Backup is located in folder `resources\db_dump`\
+To restore backup use `mongorestore` tool.\
 For example:\
-`mongorestore --host=localhost --port=27017 --gzip --nsFrom=CyntegrityDb.* --nsTo=CyntegrityDb.* resources\db_dump`
+`mongorestore --host=localhost --port=27017 --gzip --nsFrom=CyntegrityDb.* --nsTo=CyntegrityDb.* resources\db_dump`\
 Where `–-host` and `-–port` should point to an existing mongodb server.\
 `--nsTo` parameter is new database name which will be used for backend.\
 Backup already contains three users: `user1, user2, user3`
 
 ### 2. Set up pipeline executor parameters.
-Open file resources\pipeline_executor_bin\appSettings.json and edit parameters ConnectionString and DatabaseName. They should be the same as you entered in the first step.
+Open file `resources\pipeline_executor_bin\appSettings.json` and edit parameters `ConnectionString` and `DatabaseName`. They should be the same as you entered in the first step.\
 For example:
 ```
 {
