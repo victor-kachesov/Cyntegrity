@@ -59,4 +59,4 @@ Then run\
 After that, you can open the application in a browser by link http://localhost:1338
 
 ### 5. Working with the application
-First action you need to do is to select user on Home page. Otherwise, you can’t add or delete tasks and pipelines.
+First action you need to do is to select user on Home page. Otherwise, you can’t add or delete tasks.
