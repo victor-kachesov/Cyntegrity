@@ -14,7 +14,7 @@ Where `–-host` and `-–port` should point to an existing mongodb server.\
 Backup already contains three users: `user1, user2, user3`
 
 ### 2. Set up pipeline executor parameters
-A pipeline executor is already built. It is .Net Core 3.1 application. Its binaries are located in `resources\pipeline_executor_bin` folder. We need only to change settings if they distinguish from default.
+The pipeline executor is already built. It is .Net Core 3.1 application. Its binaries are located in `resources\pipeline_executor_bin` folder. We need only to change settings if they distinguish from default.
 Open file `resources\pipeline_executor_bin\appSettings.json` and edit parameters `ConnectionString` and `DatabaseName`. They should be the same as you entered in the first step.\
 For example:
 ```
