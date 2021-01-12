@@ -26,22 +26,26 @@
             <button v-bind:disabled="!canSavePipeline()" @click="savePipeline">Save pipeline</button>
         </div>
 
+        <div>------------------------------------------------------------------------------------------------------------------</div>
+
         <div>List of pipelines</div>
         <ul id="pipelines">
             <li v-for="pipeline in pipelines" :key="pipeline._id">
-                <div>Name: {{ pipeline.name }} | Average time: {{ pipeline.averageTime }} | Run time: {{ pipeline.runTime }}</div>
                 <div>
-                    Tasks of pipeline:
+                    <span>{{ pipeline.name }} | Average time: {{ pipeline.averageTime }} | Run time: {{ pipeline.runTime }}</span>
+                    <button @click="calculateAverageTime(pipeline._id)">
+                        Calculate average time
+                    </button>
+                    <button @click="runPipeline(pipeline._id)">
+                        Run pipeline
+                    </button>
+                </div>
+                <div>
+                    Tasks in pipeline:
                     <span v-for="task in pipeline.tasks" :key="task._id">
                         | {{ task.name }}
                     </span>
                 </div>
-                <button @click="calculateAverageTime(pipeline._id)">
-                    Calculate average time
-                </button>
-                <button @click="runPipeline(pipeline._id)">
-                    Run pipeline
-                </button>
             </li>
         </ul>
         
