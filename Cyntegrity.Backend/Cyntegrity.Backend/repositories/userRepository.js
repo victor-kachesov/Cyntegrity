@@ -1,8 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
 
-/**
- * We're using a factory function this time.
- */
 module.exports = function makeUserRepository({ DB_CONNECTION_STRING, DB_NAME }) {
 
     async function connect(cb) {

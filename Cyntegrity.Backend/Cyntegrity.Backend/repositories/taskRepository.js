@@ -1,9 +1,8 @@
 const MongoClient = require('mongodb').MongoClient
 const ObjectID = require('mongodb').ObjectID
 
-/**
- * We're using a factory function this time.
- */
+const TasksCollectionName = 'Tasks'
+
 module.exports = function makeUserRepository({ DB_CONNECTION_STRING, DB_NAME }) {
 
     async function connect(cb) {
@@ -25,7 +24,7 @@ module.exports = function makeUserRepository({ DB_CONNECTION_STRING, DB_NAME }) 
     async function getTasks() {
 
         return await connect(async (db) => {
-            return await db.collection('Tasks')
+            return await db.collection(TasksCollectionName)
                 .find({ deleted: { $in: [null, false] } } )
                 .toArray();
         })
@@ -36,7 +35,7 @@ module.exports = function makeUserRepository({ DB_CONNECTION_STRING, DB_NAME }) 
         var objectIds = ids.map(id => ObjectID(id))
 
         return await connect(async (db) => {
-            return await db.collection('Tasks')
+            return await db.collection(TasksCollectionName)
                 .find({ _id: { $in: objectIds } })
                 .toArray();
         })
@@ -45,7 +44,7 @@ module.exports = function makeUserRepository({ DB_CONNECTION_STRING, DB_NAME }) 
     async function getTask(_id) {
 
         return await connect(async (db) => {
-            return await db.collection('Tasks')
+            return await db.collection(TasksCollectionName)
                 .findOne({ _id: ObjectID(_id) });
         })
     }
@@ -53,7 +52,7 @@ module.exports = function makeUserRepository({ DB_CONNECTION_STRING, DB_NAME }) 
     async function addTask(task) {
 
         return await connect(async (db) => {
-            return await db.collection('Tasks')
+            return await db.collection(TasksCollectionName)
                 .insertOne(
                     { _id: ObjectID(task._id), name: task.name, averageTime: task.averageTime, owner: ObjectID(task.owner) }
             );
@@ -63,7 +62,7 @@ module.exports = function makeUserRepository({ DB_CONNECTION_STRING, DB_NAME }) 
     async function deleteTask(_id) {
 
         return await connect(async (db) => {
-            return await db.collection('Tasks')
+            return await db.collection(TasksCollectionName)
                 .update(
                     { _id: ObjectID(_id) },
                     {

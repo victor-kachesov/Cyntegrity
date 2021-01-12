@@ -7,7 +7,7 @@ const PipelineServiceName = 'pipelineService'
 // Register a route..
 router.get('/', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
+    // Use the scope to resolve a service.
     const pipelineService = req.scope.resolve(PipelineServiceName)
 
     var p = pipelineService.getPipelines();
@@ -21,7 +21,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:id', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
+    // Use the scope to resolve a service.
     const pipelineService = req.scope.resolve(PipelineServiceName)
 
     var id = req.params.id
@@ -36,7 +36,7 @@ router.get('/:id', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
+    // Use the scope to resolve a service.
     const pipelineService = req.scope.resolve(PipelineServiceName)
 
     var pipeline = req.body
@@ -51,7 +51,6 @@ router.post('/', function (req, res, next) {
 
 router.delete('/:id', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
     const pipelineService = req.scope.resolve(PipelineServiceName)
 
     var userId = req.headers.userid
@@ -68,7 +67,7 @@ router.delete('/:id', function (req, res, next) {
 
 router.post('/averageTime/:id', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
+    // Use the scope to resolve a service.
     const pipelineService = req.scope.resolve(PipelineServiceName)
 
     var id = req.params.id
@@ -84,7 +83,7 @@ router.post('/averageTime/:id', function (req, res, next) {
 
 router.post('/runPipeline/:id', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
+    // Use the scope to resolve a service.
     const pipelineService = req.scope.resolve(PipelineServiceName)
 
     var id = req.params.id

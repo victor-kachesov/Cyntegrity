@@ -3,9 +3,6 @@ const ObjectID = require('mongodb').ObjectID
 
 const PipilinesCollectionName = 'Pipelines'
 
-/**
- * We're using a factory function this time.
- */
 module.exports = function makePipelineRepository({ DB_CONNECTION_STRING, DB_NAME }) {
 
     async function connect(cb) {

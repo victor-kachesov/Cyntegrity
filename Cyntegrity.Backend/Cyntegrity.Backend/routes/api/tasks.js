@@ -2,11 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
+const TasksServiceName = 'taskService'
+
 // Register a route..
 router.get('/', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
-    const taskService = req.scope.resolve('taskService')
+    const taskService = req.scope.resolve(TasksServiceName)
 
     var p = taskService.getTasks();
 
@@ -19,8 +20,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
-    const taskService = req.scope.resolve('taskService')
+    const taskService = req.scope.resolve(TasksServiceName)
 
     var task = req.body
 
@@ -34,8 +34,7 @@ router.post('/', function (req, res, next) {
 
 router.delete('/:id', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
-    const taskService = req.scope.resolve('taskService')
+    const taskService = req.scope.resolve(TasksServiceName)
 
     var userId = req.headers.userid
 

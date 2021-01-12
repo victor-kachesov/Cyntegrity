@@ -5,7 +5,6 @@ const router = express.Router();
 // Register a route..
 router.get('/', function (req, res, next) {
 
-    // Use the scope to resolve the message service.
     const userService = req.scope.resolve('userService')
 
     var p = userService.getUsers();
