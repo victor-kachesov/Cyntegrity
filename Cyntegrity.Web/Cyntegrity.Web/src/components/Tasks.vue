@@ -66,7 +66,6 @@
             },
 
             canCurrentUserDeleteTask(task) {
-                //console.log("canCurrentUserDeleteTask", task, this.currentUser);
 
                 if (this.currentUser == null) {
                     return false;
