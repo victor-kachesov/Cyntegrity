@@ -3,15 +3,10 @@
         <h1>Cyntegrity</h1>
         <current-info></current-info>
         <div class="nav">
-            <!-- use router-link component for navigation. -->
-            <!-- specify the link by passing the `to` prop. -->
-            <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
             <router-link to="/home">Home</router-link>
             <router-link to="/tasks">Tasks</router-link>
             <router-link to="/pipelines">Pipelines</router-link>
         </div>
-        <!-- route outlet -->
-        <!-- component matched by the route will render here -->
         <router-view></router-view>
     </div>
 </template>
@@ -23,22 +18,16 @@
     import Pipelines from './components/Pipelines.vue';
     import CurrentInfo from './components/CurrentInfo.vue';
 
-    // 2. Define some routes
-    // Each route should map to a component. The "component" can
-    // either be an actual component constructor created via
-    // `Vue.extend()`, or just a component options object.
-    // We'll talk about nested routes later.
+    // Define some routes
     const routes = [
         { path: '/home', component: Home },
         { path: '/tasks', component: Tasks },
         { path: '/pipelines', component: Pipelines }
     ]
 
-    // 3. Create the router instance and pass the `routes` option
-    // You can pass in additional options here, but let's
-    // keep it simple for now.
+    // Create the router instance
     const router = new VueRouter({
-        routes // short for `routes: routes`
+        routes
     })
 
     export default {

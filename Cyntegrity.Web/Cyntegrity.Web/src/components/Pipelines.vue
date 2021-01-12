@@ -153,20 +153,7 @@
         created() {
             this.$store.dispatch('getTasks');
             this.$store.dispatch('getPipelines');
-
-            //this.unsubscribe = this.$store.subscribe((mutation) => {
-            //    if (mutation.type === 'addTaskToPipeline') {
-
-            //        //console.log(`Updating to ${state.status}`);
-
-            //        this.$store.dispatch('calculatePipelineAverageTime');
-            //    }
-            //});
         },
-
-        //beforeDestroy() {
-        //    this.unsubscribe();
-        //},
     };
 </script>
 
