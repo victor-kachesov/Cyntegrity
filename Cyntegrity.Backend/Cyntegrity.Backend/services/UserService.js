@@ -1,6 +1,5 @@
 module.exports = class UserService {
     constructor({ userRepository }) {
-        console.log('creating message service')
         this.users = userRepository
     }
 

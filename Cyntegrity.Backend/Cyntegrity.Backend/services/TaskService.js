@@ -2,7 +2,6 @@ const ObjectID = require("mongodb").ObjectID
 
 module.exports = class UserService {
     constructor({ taskRepository, userService }) {
-        console.log('creating message service')
         this.tasks = taskRepository
         this.userService = userService
     }

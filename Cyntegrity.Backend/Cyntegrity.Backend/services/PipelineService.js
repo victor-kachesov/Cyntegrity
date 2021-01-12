@@ -3,7 +3,6 @@ var spawn = require("child_process").spawn;
 
 module.exports = class PipelineService {
     constructor({ pipelineRepository, taskRepository, PIPELINE_EXECUTOR_PATH }) {
-        console.log('creating message service')
         this.pipelineRepository = pipelineRepository
         this.tasksRepository = taskRepository
         this.pipelineExecutorPath = PIPELINE_EXECUTOR_PATH
