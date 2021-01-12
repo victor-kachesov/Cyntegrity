@@ -7,15 +7,14 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const { pipeline } = require('stream');
 const awilix = require('awilix');
+const { createContainer, asValue, asFunction, asClass } = awilix
 
 const routes = require('./routes/index');
 const users = require('./routes/api/users');
 const tasks = require('./routes/api/tasks');
 const pipelines = require('./routes/api/pipelines');
-
-// Destructuring to make it nicer.
-const { createContainer, asValue, asFunction, asClass } = awilix
 
 const app = express();
 
@@ -29,7 +28,6 @@ const PipelineService = require('./services/PipelineService')
 const makeUserRepository = require('./repositories/userRepository')
 const makeTaskRepository = require('./repositories/taskRepository');
 const makePipelineRepository = require('./repositories/pipelineRepository');
-const { pipeline } = require('stream');
 
 container.register({
 
@@ -53,17 +51,10 @@ app.use(cors())
 
 // For each request we want a custom scope.
 app.use(function (req, res, next) {
-    console.log('Registering scoped stuff')
-    req.scope = container.createScope()
 
-    //// based on the query string, let's make a user..
-    //ctx.scope.register({
-    //    // This is where you'd use something like Passport,
-    //    // and retrieve the req.user or something.
-    //    currentUser: asValue({
-    //        id: ctx.request.query.userId,
-    //    }),
-    //})
+    console.log('Registering scoped stuff')
+
+    req.scope = container.createScope()
 
     return next()
 })
@@ -120,5 +111,5 @@ app.use(function (err, req, res, next) {
 app.set('port', process.env.CYNTEGRITY_BACKEND_PORT || 3000);
 
 var server = app.listen(app.get('port'), function () {
-    debug('Cyntegrity backend server listening on port ' + server.address().port);
+    console.log('Cyntegrity backend server listening on port ' + server.address().port);
 });
